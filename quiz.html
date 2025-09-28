@@ -1,0 +1,15 @@
+<form method="POST" action="/submit">
+  {% for q in questions %}
+    <div class="question">
+      <p>{{ q.question }}</p>
+      {% for opt in q.options %}
+        <label>
+          <input type="radio" name="q{{ loop.parent.index }}" value="{{ opt }}">
+          {{ opt }}
+        </label><br>
+      {% endfor %}
+    </div>
+    <hr>
+  {% endfor %}
+  <button type="submit">ส่งคำตอบ</button>
+</form>
