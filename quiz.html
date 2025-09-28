@@ -1,15 +1,15 @@
-<form method="POST" action="/submit">
-  {% for q in questions %}
-    <div class="question">
-      <p>{{ q.question }}</p>
-      {% for opt in q.options %}
-        <label>
-          <input type="radio" name="q{{ loop.parent.index }}" value="{{ opt }}">
-          {{ opt }}
-        </label><br>
-      {% endfor %}
-    </div>
-    <hr>
+<h2>คำถามที่ {{ qnum }}/{{ total }}</h2>
+<p>{{ question.q }}</p>
+<form method="POST">
+  {% for opt in question.options %}
+    <label><input type="radio" name="answer" value="{{ opt }}" required> {{ opt }}</label><br>
   {% endfor %}
-  <button type="submit">ส่งคำตอบ</button>
+  <button type="submit">ตอบ</button>
 </form>
+
+<!-- Progress bar บนเมฆ -->
+<div style="margin-top:20px;">
+  <div style="width:200px;height:100px;background:#ccc;position:relative;">
+    <div style="width:{{ progress }}%;height:100%;background:#666;"></div>
+  </div>
+</div>
